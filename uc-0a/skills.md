@@ -3,14 +3,16 @@
 # Delete these comments before committing.
 
 skills:
-  - name: [skill_name]
-    description: [One sentence — what does this skill do?]
-    input: [What does it receive? Type and format.]
-    output: [What does it return? Type and format.]
-    error_handling: [What does it do when input is invalid or ambiguous?]
+  - name: classify_complaint
+    description: Analyzes a single complaint description to determine its category, priority, and justification reason.
+    input: row (dictionary containing complaint description)
+    output: A dictionary with category, priority, reason, and an ambiguity flag.
+    error_handling: If the description is empty or missing, return category 'Other' and flag 'NEEDS_REVIEW'.
 
-  - name: [second_skill_name]
-    description: [One sentence]
-    input: [Type and format]
-    output: [Type and format]
-    error_handling: [What does it do when input is invalid or ambiguous?]
+  - name: batch_classify
+    description: Processes an entire CSV file of complaints and writes the results to an output CSV.
+    input: input_file (string), output_file (string)
+    output: None (writes to file).
+    error_handling: Fail if the input file is not found or if the output path is unwritable.
+
+
